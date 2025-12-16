@@ -1,0 +1,15 @@
+{
+    "index": {
+        "title": "Home",
+        "type": "page",
+        "display": "hidden",
+        "theme": {
+            "layout": "full",
+            "timestamp": false
+        }
+    },
+    "docs": {
+        "title": "Documentation",
+        "type": "page"
+    }
+}
