@@ -37,6 +37,9 @@ const config: DocsThemeConfig = {
         </>
     ),
     darkMode: true,
+    nextThemes: {
+        defaultTheme: 'system',
+    },
     primaryHue: 250, // Purple-ish
     primarySaturation: 80,
 }
