@@ -5,10 +5,28 @@ export function Hero() {
     return (
         <section className="relative pt-20 pb-32 md:pt-32 md:pb-48 overflow-hidden">
             {/* Background Gradients */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none z-[-1]">
-                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-500/20 rounded-full blur-[100px]" />
-                <div className="absolute top-[10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/20 rounded-full blur-[100px]" />
+            <div className="absolute top-0 left-0 w-full h-[120%] overflow-hidden pointer-events-none z-[-1]">
+                {/* Starry Background */}
+                <div className="absolute inset-0 z-0 opacity-50">
+                    {[...Array(60)].map((_, i) => (
+                        <div
+                            key={i}
+                            className="star"
+                            style={{
+                                top: `${Math.random() * 100}%`,
+                                left: `${Math.random() * 100}%`,
+                                width: `${Math.random() * 2 + 1}px`,
+                                height: `${Math.random() * 2 + 1}px`,
+                                animationDuration: `${Math.random() * 10 + 20}s`,
+                                animationDelay: `${Math.random() * 5}s`,
+                            }}
+                        />
+                    ))}
+                </div>
+                <div className="absolute top-0 left-1/4 w-[50%] h-[50%] bg-purple-500/30 rounded-full blur-[120px]" />
+                <div className="absolute top-20 right-1/4 w-[50%] h-[50%] bg-blue-500/30 rounded-full blur-[120px]" />
             </div>
+
 
             <div className="container mx-auto px-4 text-center z-10">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-gray-300 mb-8 backdrop-blur-sm">

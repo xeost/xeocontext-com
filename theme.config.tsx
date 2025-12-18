@@ -4,7 +4,7 @@ import { DocsThemeConfig } from 'nextra-theme-docs'
 const config: DocsThemeConfig = {
     logo: <span className="font-bold text-xl">XeoContext</span>,
     project: {
-        link: 'https://github.com/xeost/xeocontext-com',
+        link: 'https://github.com/xeost/xeocontext',
     },
     docsRepositoryBase: 'https://github.com/xeost/xeocontext-com/blob/main',
     footer: {
