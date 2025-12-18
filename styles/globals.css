@@ -27,15 +27,22 @@ body {
   }
 }
 
-/* Custom override for Nextra's default container on the landing page if needed */
+/* Custom override for Nextra's default container on the landing page */
 .home-content {
   width: 100vw;
-  max-width: 100vw;
   position: relative;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+  overflow-x: hidden;
+}
+
+/* Fix global horizontal scroll that might be caused by 100vw + scrollbar */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 /* Starry Background Animation */
@@ -45,10 +52,15 @@ body {
 
 .star {
   position: absolute;
-  background: white;
+  background: #1f2937;
+  /* darker gray (gray-800) for better visibility in light mode */
   border-radius: 50%;
   animation: move-stars linear infinite;
   opacity: 0.8;
+}
+
+.dark .star {
+  background: white;
 }
 
 @keyframes move-stars {
