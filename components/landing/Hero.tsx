@@ -40,14 +40,13 @@ export function Hero() {
                 </div>
 
                 <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-gray-900 to-gray-600 dark:from-white dark:to-gray-500 mb-6 pb-2">
-                    Your Architecture. <br className="hidden md:block" />
+                    Your System Design. <br className="hidden md:block" />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-500">Unified.</span>
                 </h1>
 
                 {/* ... existing description ... */}
                 <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-                    The specific home for your System Design, OpenAPI, and AsyncAPI.
-                    Visualize your entire stack context in one beautiful, static interface.
+                    A Single Source of Truth for AI-assisted software development. So that different layers generate code working as a team and understanding your project.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
