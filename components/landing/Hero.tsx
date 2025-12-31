@@ -25,8 +25,8 @@ export function Hero() {
                         />
                     ))}
                 </div>
-                <div className="absolute top-0 left-1/4 w-[50%] h-[50%] bg-purple-200/50 dark:bg-purple-500/30 rounded-full blur-[120px]" />
-                <div className="absolute top-20 right-1/4 w-[50%] h-[50%] bg-blue-200/50 dark:bg-blue-500/30 rounded-full blur-[120px]" />
+                <div className="absolute top-0 left-1/4 w-[50%] h-[50%] bg-purple-200/50 dark:bg-purple-500/15 rounded-full blur-[120px]" />
+                <div className="absolute top-20 right-1/4 w-[50%] h-[50%] bg-blue-200/50 dark:bg-blue-500/15 rounded-full blur-[120px]" />
             </div>
 
 
@@ -47,15 +47,15 @@ export function Hero() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-                    <Link href="/docs" className="flex items-center gap-2 px-8 py-3 rounded-full bg-gray-900 text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-colors shadow-lg dark:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                    <Link href="/docs" className="hero-button flex items-center gap-2 px-8 py-3 rounded-full bg-gray-900 text-white hover:bg-gray-800 dark:bg-indigo-600 dark:text-white dark:hover:bg-indigo-500 transition-colors shadow-lg dark:shadow-[0_0_20px_rgba(99,102,241,0.3)] !text-white">
                         Get Started <ArrowRight className="w-4 h-4" />
                     </Link>
 
-                    <div className="flex items-center rounded-full border border-gray-300 dark:border-white/20 bg-white/60 dark:bg-transparent shadow-sm backdrop-blur-sm p-1">
+                    <div className="flex items-center rounded-full border border-gray-300 dark:border-white/20 bg-white/60 dark:bg-white/5 shadow-sm backdrop-blur-sm p-1">
                         <Link
                             href="https://demo.xeocontext.com"
                             target="_blank"
-                            className="flex items-center gap-2 px-6 py-2 rounded-full text-gray-700 hover:bg-gray-100 dark:text-white dark:hover:bg-white/10 transition-all font-medium text-sm"
+                            className="hero-button flex items-center gap-2 px-6 py-2 rounded-full text-gray-700 hover:bg-gray-200 dark:text-white dark:hover:bg-white/10 transition-all font-medium text-sm"
                         >
                             View Demo <Play className="w-4 h-4" />
                         </Link>
@@ -63,7 +63,7 @@ export function Hero() {
                         <Link
                             href="https://github.com/xeost/xeocontext/tree/main/examples/markdown-openapi-asyncapi"
                             target="_blank"
-                            className="flex items-center gap-2 px-6 py-2 rounded-full text-gray-700 hover:bg-gray-100 dark:text-white dark:hover:bg-white/10 transition-all font-medium text-sm"
+                            className="hero-button flex items-center gap-2 px-6 py-2 rounded-full text-gray-700 hover:bg-gray-200 dark:text-white dark:hover:bg-white/10 transition-all font-medium text-sm"
                         >
                             Source
                             <svg role="img" viewBox="0 0 24 24" className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg">
