@@ -1,92 +1,66 @@
-# Content & Structure Guidelines
+---
+title: Structure & Organization
+description: Learn about the Domain-Driven structure and directory organization of XeoContext content.
+---
 
-This guide explains how to organize your files and write content that leverages XeoContext's rendering features.
+# Structure & Organization
 
-## Repository Structure
+## Why Domain-Driven Structure?
+Organizing your design content by **Domain** (e.g., `identity`, `payments`) rather than by file type is crucial for effective AI-assisted development. This approach creates clear **Context Boundaries**, allowing you to feed an AI agent the complete "truth" about a specific domain—its business logic (Markdown), API contracts (OpenAPI), and events (AsyncAPI)—without distracting noise.
 
-> **Note:** This structure follows Domain-Driven Design (DDD) principles.
+For a deeper dive into this philosophy, read [Harmonizing AI Code Generation with Centralized System Design](https://xeost.com/blog/centralizing-system-design).
 
-The content is located at the **repository root**. It follows a strict separation between **Global Architecture** and **Bounded Contexts (Domains)**.
+## Directory Structure
+The content directory follows a strict separation between **Global Architecture** and **Bounded Contexts (Domains)**.
+
+**1. Root Configuration**
+- `xeocontext.config.json`: [MANDATORY] The central navigation and metadata map for the viewer.
+
+**2. The "Global" Directory (`/global`)**
+Defines the laws of the system and cross-cutting concerns.
+- **Gateway (`/global/gateway`)**: Contains the **Master Root** files (`openapi.yaml`, `asyncapi.yaml`). These files aggregate endpoints and channels from all domains to provide a unified "System View".
+- **ADRs (`/global/adrs`)**: Architecture Decision Records explaining *why* decisions were made.
+- **Standards (`/global/standards`)**: Naming conventions, error handling, etc.
+
+**3. Domain Modules (`/domains`)**
+Each folder represents a specific business capability (e.g., `identity`, `payments`).
+- **Co-location**: Markdown, OpenAPI, and AsyncAPI specs reside together.
+- **Fragmented Architecture**: Actual definitions (Schemas, Paths) should live in `components/` subfolders and be aggregated by the domain's root `openapi.yaml`.
 
 ```text
-.
-├── docker-compose.yml            # Orchestration to run the viewer locally.
-├── xeocontext.config.json        # [MANDATORY] The central navigation and metadata map.
-├── global/                       # [MANDATORY] Cross-cutting architectural decisions & Master Roots.
-│   ├── gateway/                  # Unified System API (Master Roots).
-│   │   ├── openapi.yaml          # Master REST API definition.
-│   │   └── asyncapi.yaml         # Master Event definition.
-│   ├── adrs/                     # Architecture Decision Records.
-│   └── standards/                # Coding conventions, API guidelines, etc.
-└── domains/                      # [MANDATORY] Business Logic Modules.
-    ├── {domain-name}/            # (e.g., identity, payments)
-    │   ├── readme.md             # Domain overview.
-    │   ├── openapi.yaml          # Domain-specific REST API.
-    │   └── asyncapi.yaml         # Domain-specific Event API.
+/content
+├── xeocontext.config.json        # [MANDATORY] Main configuration
+├── global/                       # [MANDATORY] Cross-cutting architecture
+│   ├── gateway/                  # Unified System API (Master Roots)
+│   │   ├── openapi.yaml          # Imports from all domains
+│   │   └── asyncapi.yaml
+│   ├── adrs/                     # Architecture Decision Records
+│   └── standards/                # Global Standards
+└── domains/                      # [MANDATORY] Business Logic
+    ├── {domain-name}/            # e.g., identity, payments
+    │   ├── readme.md             # Domain overview
+    │   ├── openapi.yaml          # Domain-specific API Root
+    │   ├── asyncapi.yaml         # Domain-specific Event Root
+    │   └── components/           # Reusable schemas & paths
+    │       ├── schemas/
+    │       └── paths/
 ```
-
-## System Design (Markdown)
-
-XeoContext uses a robust Markdown renderer with support for GitHub Flavored Markdown (GFM).
-
-### Diagrams (Mermaid)
-
-You can write Mermaid diagrams directly in your markdown using code blocks with the `mermaid` language.
-
-```mermaid
-graph TD;
-    A[Client] -->|HTTP| B(Load Balancer);
-    B -->|Route| C{Service};
-    C -->|Get| D[Database];
-```
-
-### Code Blocks
-
-Standard code highlighting is supported.
-
-```typescript
-interface User {
-  id: string;
-  name: string;
-}
-```
-
-### Inline Code
-
-Use backticks for inline commands or references, e.g., `GET /users`.
-
-### Headings
-
-Use standard `# H1`, `## H2`, `### H3` tags. The application automatically generates a **Table of Contents (TOC)** based on these headers.
-
-## APIs
-
-### OpenAPI
-
-Your OpenAPI 3.0+ file (YAML or JSON) is rendered using Swagger UI. This provides an interactive console for your API consumers.
-
-### AsyncAPI
-
-Your AsyncAPI 2.0+ file is rendered using a unified AsyncAPI component, perfect for visualizing message-driven architectures (Channels, Subscribe/Publish operations).
 
 ## Content Validation
-
 It is recommended to validate your spec files before committing changes to ensure the viewer renders them correctly.
 
 ### OpenAPI Validation
-
 You can use [Redocly CLI](https://redocly.com/docs/cli/) to lint and bundle your OpenAPI definitions.
 
 ```bash
 # Lint the main gateway file (and all its references)
-pnpm dlx @redocly/cli lint content/global/gateway/openapi.yaml
+pnpm --package=@redocly/cli dlx redocly lint content/global/gateway/openapi.yaml
 
 # Lint a specific domain file
-pnpm dlx @redocly/cli lint content/domains/identity/components/paths/auth_login.yaml
+pnpm --package=@redocly/cli dlx redocly lint content/domains/identity/components/paths/auth_login.yaml
 ```
 
 ### AsyncAPI Validation
-
 You can use [AsyncAPI CLI](https://www.asyncapi.com/docs/tools/cli) to validate your AsyncAPI definitions.
 
 ```bash

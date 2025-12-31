@@ -1,20 +1,43 @@
-# Welcome to XeoContext
+---
+title: Introduction
+description: XeoContext is a modern "System Design" visualization tool.
+---
 
-**XeoContext** is a modern, unified documentation viewer designed to bridge the gap between high-level system design and low-level API specifications. It provides a seamless interface to visualize your Markdown-based architecture docs, OpenApi REST definitions, and AsyncAPI event-driven schemas all in one place.
+# Introduction
 
-## Core Features
+XeoContext is a modern "System Design" visualization tool. It is designed to be a lightweight, self-contained viewer for:
 
-- **Unified View:** Switch effortlessly between textual System Design documentation and interactive API references.
-- **System Design:** Render rich Markdown with support for **Mermaid diagrams**, inline code highlighting, and auto-generated Tables of Contents.
-- **OpenAPI Integration:** Embedded Swagger UI to visualize and test your REST API endpoints.
-- **AsyncAPI Integration:** Native rendering for Event-Driven Architectures (Kafka, RabbitMQ, etc.).
-- **Zero-Build Deployment:** XeoContext is designed as a static container. You bring your content; we provide the viewer. No need to rebuild the application to update documentation.
-- **Responsive & Themed:** Fully responsive design with automatic Dark/Light mode support.
+- **System Design documents**: Markdown files with Mermaid diagram support.
+- **OpenAPI definitions**: visualized using Swagger UI.
+- **AsyncAPI definitions**: visualized using AsyncAPI React component.
 
-## Why XeoContext?
+XeoContext is designed to be deployed as a Docker container with a read-only volume mounted to provide the content.
 
-Documentation often lives in silos: Confluence for design, SwaggerHub for REST, and obscure text files for events. XeoContext centralizes these technical artifacts, making it easier for developers, architects, and stakeholders to understand the complete context of a system.
+## Features
 
-## Quick Start
+### Core Viewers
+- **System Design Viewer**:
+  - Renders Markdown documents with GitHub Flavored Markdown (GFM).
+  - **Mermaid Diagrams**: Native support for Flowcharts, Sequence diagrams, C4 diagrams, classes, and more.
+  - **Smart Navigation**: Recursive sidebar navigation with support for nested items.
+  - **SEO Optimized**: dynamic document title and description updates based on frontmatter.
+- **OpenAPI Viewer**:
+  - Interactive REST API documentation using a custom implementation of **Swagger UI**.
+  - **Dark Mode Support**: Fully customized theme that adapts to the application's dark mode.
+  - **Server-Side Dereferencing**: Resolves all `$ref` pointers (internal and external) to ensure stability.
+- **AsyncAPI Viewer**:
+  - Event-Driven Architecture visualization using the AsyncAPI React component.
+  - Supports dereferencing of AsyncAPI schemas from external URLs.
 
-Check out the [Setup Guide](./setup) to get your documentation running in minutes using Docker.
+### Architecture & Experience
+- **Theme Support**: Seamless switching between Light, Dark, and System modes.
+- **Dynamic Content**: Content is decoupled from code. Loads configuration and documentation from local files or Git repositories.
+- **Docker Ready**:
+  - Production-optimized image (`xeost/xeocontext:latest`).
+  - Live-reload image for development (`xeost/xeocontext-live-reload:latest`).
+- **Customizable Deployment**: Built-in scripts (`setup-content`) to easily deploy your own instance to Vercel or other platforms, syncing content from your own repository.
+- **Modern Stack**: Built with Next.js 16 (App Router) and Turbopack.
+
+## AI Integration
+
+This repository is designed to be the "Source of Truth" for system design. The `content` directory is intended to be read by AI Coding Agents (via MCP Servers or direct access) to scaffold and maintain other repositories based on the designs defined here. But from a clean system design content repository, see [`examples/markdown-openapi-asyncapi`](https://github.com/xeost/xeocontext/tree/main/examples/markdown-openapi-asyncapi) for a quickstart.

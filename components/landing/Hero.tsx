@@ -25,8 +25,8 @@ export function Hero() {
                         />
                     ))}
                 </div>
-                <div className="absolute top-0 left-1/4 w-[50%] h-[50%] bg-purple-500/30 rounded-full blur-[120px]" />
-                <div className="absolute top-20 right-1/4 w-[50%] h-[50%] bg-blue-500/30 rounded-full blur-[120px]" />
+                <div className="absolute top-0 left-1/4 w-[50%] h-[50%] bg-purple-200/50 dark:bg-purple-500/30 rounded-full blur-[120px]" />
+                <div className="absolute top-20 right-1/4 w-[50%] h-[50%] bg-blue-200/50 dark:bg-blue-500/30 rounded-full blur-[120px]" />
             </div>
 
 
