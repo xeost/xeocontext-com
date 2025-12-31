@@ -70,14 +70,14 @@ body {
 }
 
 /* Accessibility Fix: Improve link contrast in Dark Mode */
-.dark .nextra-content a:not(.subheading-anchor),
+.dark .nextra-content a:not(.subheading-anchor):not(.hero-button),
 .dark .nx-text-primary-600,
 .dark .dark\:nx-text-primary-600 {
   color: var(--primary-600) !important;
 }
 
 /* Ensure hover states are also visible */
-.dark .nextra-content a:not(.subheading-anchor):hover,
+.dark .nextra-content a:not(.subheading-anchor):not(.hero-button):hover,
 .dark .nx-text-primary-600:hover,
 .dark .dark\:nx-text-primary-600:hover {
   color: var(--primary-500) !important;
